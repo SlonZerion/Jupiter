@@ -1,0 +1,29 @@
+# https://solana-mainnet.g.alchemy.com/v2/LC90BEXAHyfSbG2nrOD8mx0LW9CQU_TK
+[MAIN]
+
+    SOL_RPC_URL = "http://api.mainnet-beta.solana.com"  # Solana RPC ( https://api.mainnet-beta.solana.com )
+
+    MAX_RETRIES = 3 # Максимальное кол-во попыток сделать запрос/транзакцию если они фейлятся
+
+    NEXT_ADDRESS_WAIT_TIME = [1, 5]  # Время ожидания в секундах между стартом выполнением разных акков рандомное в указанном диапазоне 
+
+    NEXT_TX_WAIT_TIME = [30, 50] # Время ожидания между действиями одного аккаунта (в секундах)
+
+[SWAP]
+
+    # "SOL", "USDC", "USDT", "JUP", "BONK", 'ZEUS', 'PRCL'
+
+    SWAP_FROM = ["USDC", "USDT"]
+    SWAP_TO = ["USDT", "USDC"]
+
+    TX_COUNT = [1, 2] # Количество свапов на каждый аккаунт рандомное в указанном диапазоне
+
+    BALANCE_MIN_AMOUNT = 0.001 # Минимальное количество токена, которую ищет скрипт среди списка SWAP_FROM
+    
+    SWAP_AMOUNT_PERCENT = 20 # Сколько процентов от баланса свапать. Рандомизируется в пределах погрешности
+    
+    MAX_SWAP_AMOUNT_PERCENT_INACCURACY = 1 # Максимальная погрешность в проценте
+    
+    SLIPPAGE_BPS = 50 # slippage в битах
+
+
