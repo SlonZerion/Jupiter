@@ -7,20 +7,15 @@ from libs.solana_py_proxy.rpc.types import TxOpts
 from utils.config import *
 from utils.tools import *
 from utils.vars import *
-from client import Client
+from .client import Client
 import httpx
 
-async def start_swap_accounts(accounts_dict: dict):
-    tasks_list = []
-    delay_between_pairs = 0
-    for id, v in accounts_dict.items():
-        tasks_list.append(asyncio.create_task(start_swap(delay_between_pairs, id, v['account'], v['proxy'])))
-        delay_between_pairs += 1
-    await asyncio.gather(*tasks_list)
-    await asyncio.sleep(1)
+
+
+
 
 class JupiterSwap(Client):
-        
+    
     
     async def get_coin_quote(self, token_from_contract, token_to_contract, amount):
         url = f'http://quote-api.jup.ag/v6/quote?inputMint={token_from_contract}&outputMint={token_to_contract}&amount={amount}&slippage={SLIPPAGE_BPS}'
@@ -38,7 +33,7 @@ class JupiterSwap(Client):
                         'userPublicKey': str(self.keypair.pubkey()),
                         'wrapUnwrapSOL': False,
                         'dynamicComputeUnitLimit': True, 
-                        'prioritizationFeeLamports': 500000
+                        'prioritizationFeeLamports': 60000
                     },
                     timeout=5.0
                 )
@@ -60,14 +55,13 @@ class JupiterSwap(Client):
         
         logger.info(f"{self.id_account} | Transaction sent: https://solscan.io/tx/{transaction_id}")
         
-        print(await self.rpc.confirm_transaction(Signature.from_string(transaction_id)))
         status = await self.wait_tx_status(transaction_id)
 
-        # if status == True:
-        #     return
-        # else:
-        #     logger.error(f'{self.id_account} | https://solscan.io/tx/{transaction_id}')
-        #     raise ValueError("Transaction did not complete")
+        if status == True:
+            return
+        else:
+            logger.error(f'{self.id_account} | https://solscan.io/tx/{transaction_id}')
+            raise ValueError("Transaction did not complete")
             
         
 
@@ -114,5 +108,6 @@ async def start_swap(delay_before_start, id_account, account, proxy):
         logger.info(f"{id_account} | Jupiter | SWAP | {round(swap_amount, 4)} {token_from} -> {token_to}")
         
         swap_amount = decimal_to_int(swap_amount, TOKEN_DECIMALS[token_from])
+        
         await jup.swap(token_from, token_to, swap_amount)
         
