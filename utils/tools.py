@@ -42,7 +42,7 @@ def get_accounts_data():
 
 async def sleep(sleep_from: int, sleep_to: int):
     delay = random.randint(sleep_from, sleep_to)
-    logger.info(f"💤 Sleep {delay} s.")
+    logger.info(f"Sleep {delay} s.")
     for _ in range(delay):
         await asyncio.sleep(1)
 
@@ -54,8 +54,8 @@ def retry(func):
             try:
                 result = await func(*args, **kwargs)
                 return result
-            except Exception as e:
-                logger.error(f"Error | {e}")
+            except Exception as ex:
+                logger.error(f"Error | {ex}")
                 await sleep(10, 20)
                 retries += 1
     return wrapper

@@ -1,6 +1,6 @@
 import asyncio
 from utils.tools import get_accounts_data, logger
-from core.jupiter_swap import start_swap
+from core.jupiter import start_swap
 
 
 

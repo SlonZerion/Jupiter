@@ -1,4 +1,3 @@
-    # https://solana-mainnet.g.alchemy.com/v2/LC90BEXAHyfSbG2nrOD8mx0LW9CQU_TK
 [MAIN]
 
     SOL_RPC_URL = "https://api.mainnet-beta.solana.com"  # Solana RPC ( https://api.mainnet-beta.solana.com )
@@ -16,13 +15,11 @@
     SWAP_FROM = ["USDC", "USDT"]
     SWAP_TO = ["USDT", "USDC"]
 
-    TX_COUNT = [1, 2] # Количество свапов на каждый аккаунт рандомное в указанном диапазоне
+    TX_COUNT = [2, 2] # Количество свапов на каждый аккаунт рандомное в указанном диапазоне
 
     BALANCE_MIN_AMOUNT = 0.01 # Минимальное количество токена, которую ищет скрипт среди списка SWAP_FROM
-    
-    SWAP_AMOUNT_PERCENT = 20 # Сколько процентов от баланса свапать. Рандомизируется в пределах погрешности
-    
-    MAX_SWAP_AMOUNT_PERCENT_INACCURACY = 1 # Максимальная погрешность в проценте
+
+    SWAP_AMOUNT_PERCENT = [1, 2] # Сколько процентов от баланса свапать. Рандомизируется в пределах погрешности
     
     SLIPPAGE_BPS = 50 # slippage в битах
 

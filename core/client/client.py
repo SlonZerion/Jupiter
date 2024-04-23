@@ -15,7 +15,7 @@ class Client():
     def __init__(self, private_key, proxy, id_account) -> None:
         self.id_account = id_account
         self.keypair = Keypair.from_base58_string(private_key)
-        self.proxy_dict = {}#{'http://': f'http://{proxy}'}
+        self.proxy_dict = {'http://': f'http://{proxy}'}
         self.rpc = AsyncClient(SOL_RPC_URL, proxy=self.proxy_dict)
         
     async def wait_tx_status(self, transaction_id) -> bool:

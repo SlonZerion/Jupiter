@@ -1,7 +1,6 @@
 import random, base64, json, asyncio
 from solders.transaction import VersionedTransaction
 from solders.message import to_bytes_versioned
-from solders.signature import Signature
 from libs.solana_py_proxy.rpc.commitment import Processed
 from libs.solana_py_proxy.rpc.types import TxOpts
 from utils.config import *
@@ -13,17 +12,16 @@ import httpx
 
 
 
-
 class JupiterSwap(Client):
-    
-    
+
+
     async def get_coin_quote(self, token_from_contract, token_to_contract, amount):
         url = f'http://quote-api.jup.ag/v6/quote?inputMint={token_from_contract}&outputMint={token_to_contract}&amount={amount}&slippage={SLIPPAGE_BPS}'
         async with httpx.AsyncClient(proxies=self.proxy_dict) as client:
-            r = await client.get(url, timeout=5.0)
+            r = await client.get(url, timeout=10.0)
             return r.json()
-                
-                
+
+
     async def get_coin_swap_quote(self, quoteResponse): 
         async with httpx.AsyncClient(proxies=self.proxy_dict) as client:
             r = await client.post(
@@ -35,9 +33,10 @@ class JupiterSwap(Client):
                         'dynamicComputeUnitLimit': True, 
                         'prioritizationFeeLamports': 60000
                     },
-                    timeout=5.0
+                    timeout=10.0
                 )
             return r.json()
+
 
     @retry
     async def swap(self, token_from, token_to, amount):
@@ -100,11 +99,7 @@ async def start_swap(delay_before_start, id_account, account, proxy):
             logger.error(f'{id_account} | Jupiter | {jup.keypair.pubkey()} | Can\'t find any token with at least {BALANCE_MIN_AMOUNT} balance')
             break
         
-        swap_amount *= random.uniform(
-            SWAP_AMOUNT_PERCENT - MAX_SWAP_AMOUNT_PERCENT_INACCURACY,
-            SWAP_AMOUNT_PERCENT + MAX_SWAP_AMOUNT_PERCENT_INACCURACY
-        ) / 100.0
-        
+        swap_amount *= random.uniform(SWAP_AMOUNT_PERCENT[0], SWAP_AMOUNT_PERCENT[1]) / 100.0
         logger.info(f"{id_account} | Jupiter | SWAP | {round(swap_amount, 4)} {token_from} -> {token_to}")
         
         swap_amount = decimal_to_int(swap_amount, TOKEN_DECIMALS[token_from])

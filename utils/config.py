@@ -30,8 +30,6 @@ TX_COUNT = settings['TX_COUNT']
 BALANCE_MIN_AMOUNT = settings['BALANCE_MIN_AMOUNT']
 # Сколько процентов от баланса свапать. Рандомизируется в пределах погрешности
 SWAP_AMOUNT_PERCENT = settings['SWAP_AMOUNT_PERCENT']
-# Максимальная погрешность в проценте
-MAX_SWAP_AMOUNT_PERCENT_INACCURACY = settings['MAX_SWAP_AMOUNT_PERCENT_INACCURACY']
 
 SLIPPAGE_BPS = settings['SLIPPAGE_BPS']
 
