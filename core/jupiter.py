@@ -1,8 +1,8 @@
 import random, base64, json, asyncio
 from solders.transaction import VersionedTransaction
 from solders.message import to_bytes_versioned
-from libs.solana_py_proxy.rpc.commitment import Processed
-from libs.solana_py_proxy.rpc.types import TxOpts
+from solana.rpc.commitment import Processed
+from solana.rpc.types import TxOpts
 from utils.config import *
 from utils.tools import *
 from utils.vars import *
@@ -17,13 +17,13 @@ class JupiterSwap(Client):
 
     async def get_coin_quote(self, token_from_contract, token_to_contract, amount):
         url = f'http://quote-api.jup.ag/v6/quote?inputMint={token_from_contract}&outputMint={token_to_contract}&amount={amount}&slippage={SLIPPAGE_BPS}'
-        async with httpx.AsyncClient(proxies=self.proxy_dict) as client:
+        async with httpx.AsyncClient(proxies=self.proxy) as client:
             r = await client.get(url, timeout=10.0)
             return r.json()
 
 
     async def get_coin_swap_quote(self, quoteResponse): 
-        async with httpx.AsyncClient(proxies=self.proxy_dict) as client:
+        async with httpx.AsyncClient(proxies=self.proxy) as client:
             r = await client.post(
                 url='http://quote-api.jup.ag/v6/swap',
                 json={

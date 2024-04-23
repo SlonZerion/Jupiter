@@ -13,7 +13,7 @@ async def start_swap_accounts(accounts_dict: dict):
     await asyncio.gather(*tasks_list)
     await asyncio.sleep(1)
 
-        
+
 if __name__ == "__main__":
     accounts_dict = get_accounts_data()
     logger.success(f"✅ {len(accounts_dict)} pairs of accounts were successfully uploaded\n")

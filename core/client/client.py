@@ -1,9 +1,9 @@
 import asyncio
 import json
-from libs.solana_py_proxy.rpc.async_api import AsyncClient
+from solana.rpc.async_api import AsyncClient
 from solders.keypair import Keypair
 from solders.signature import Signature
-from libs.solana_py_proxy.rpc.types import TokenAccountOpts
+from solana.rpc.types import TokenAccountOpts
 from utils.tools import *
 from utils.config import *
 from solders.pubkey import Pubkey
@@ -15,8 +15,8 @@ class Client():
     def __init__(self, private_key, proxy, id_account) -> None:
         self.id_account = id_account
         self.keypair = Keypair.from_base58_string(private_key)
-        self.proxy_dict = {'http://': f'http://{proxy}'}
-        self.rpc = AsyncClient(SOL_RPC_URL, proxy=self.proxy_dict)
+        self.proxy = {'http://': f'http://{proxy}'}
+        self.rpc = AsyncClient(SOL_RPC_URL)
         
     async def wait_tx_status(self, transaction_id) -> bool:
         sig = Signature.from_string(transaction_id)
