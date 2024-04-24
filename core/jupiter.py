@@ -1,8 +1,8 @@
 import random, base64, json, asyncio
 from solders.transaction import VersionedTransaction
 from solders.message import to_bytes_versioned
-from solana.rpc.commitment import Processed
-from solana.rpc.types import TxOpts
+from solana_py_proxy.rpc.commitment import Processed
+from solana_py_proxy.rpc.types import TxOpts
 from utils.config import *
 from utils.tools import *
 from utils.vars import *

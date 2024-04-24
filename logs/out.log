@@ -1,0 +1,21 @@
+12:37:35.84 SUCCESS | __main__:<module>:19 | ✅ 1 pairs of accounts were successfully uploaded
+
+12:37:35.84 INFO | core.jupiter:start_swap:70 | 1 | Sleep 0s before start
+12:37:35.88 INFO | core.jupiter:start_swap:76 | 1 | Jupiter | 6qpx3K4K8g2GmMtrYHT8Q8MTCUFD4iiWmvtavAkJjC4U | 2 txs
+12:37:36.46 INFO | core.jupiter:start_swap:87 | 1 | Get balance | 6qpx3K4K8g2GmMtrYHT8Q8MTCUFD4iiWmvtavAkJjC4U - 0.008339867 SOL
+12:37:36.72 INFO | core.jupiter:start_swap:87 | 1 | Get balance | 6qpx3K4K8g2GmMtrYHT8Q8MTCUFD4iiWmvtavAkJjC4U - 2.568784 USDC
+12:37:36.73 INFO | core.jupiter:start_swap:103 | 1 | Jupiter | SWAP | 0.0457 USDC -> SOL
+12:37:37.92 INFO | core.jupiter:swap:55 | 1 | Transaction sent: https://solscan.io/tx/3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:37:37.93 INFO | core.client.client:wait_tx_status:25 | 1 | Wait tx status... (max 240s)
+12:37:44.41 INFO | core.client.client:wait_tx_status:34 | 1 | Verifying transaction... 3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:37:50.88 INFO | core.client.client:wait_tx_status:34 | 1 | Verifying transaction... 3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:37:57.35 INFO | core.client.client:wait_tx_status:34 | 1 | Verifying transaction... 3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:38:03.82 INFO | core.client.client:wait_tx_status:34 | 1 | Verifying transaction... 3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:38:10.25 INFO | core.client.client:wait_tx_status:34 | 1 | Verifying transaction... 3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:38:16.72 INFO | core.client.client:wait_tx_status:34 | 1 | Verifying transaction... 3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:38:23.19 INFO | core.client.client:wait_tx_status:34 | 1 | Verifying transaction... 3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp
+12:38:29.48 SUCCESS | core.client.client:wait_tx_status:31 | 1 | Transaction https://solscan.io/tx/3ZNd7rHNuXfR9N839dJS4H94WcaVWSm2AHTTNGkrajw8AjzDi1EtieR5qw1zmxLPkgTjeSMbZv2RYUr9uBfAgVYp is success finalized
+12:38:29.48 INFO | core.jupiter:start_swap:82 | 1 | Jupiter | SWAP | Sleep between tx...
+12:38:59.75 INFO | core.jupiter:start_swap:87 | 1 | Get balance | 6qpx3K4K8g2GmMtrYHT8Q8MTCUFD4iiWmvtavAkJjC4U - 0.00856662 SOL
+12:39:00.00 INFO | core.jupiter:start_swap:87 | 1 | Get balance | 6qpx3K4K8g2GmMtrYHT8Q8MTCUFD4iiWmvtavAkJjC4U - 2.523131 USDC
+12:39:00.00 INFO | core.jupiter:start_swap:103 | 1 | Jupiter | SWAP | 0.0354 USDC -> SOL

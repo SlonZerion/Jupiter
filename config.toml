@@ -1,10 +1,10 @@
 [MAIN]
 
-    SOL_RPC_URL = "https://api.mainnet-beta.solana.com"  # Solana RPC ( https://api.mainnet-beta.solana.com )
+    SOL_RPC_URL = "http://api.mainnet-beta.solana.com"  # Solana RPC ( http://api.mainnet-beta.solana.com )
 
     MAX_RETRIES = 3 # Максимальное кол-во попыток сделать запрос/транзакцию если они фейлятся
 
-    NEXT_ADDRESS_WAIT_TIME = [1, 5]  # Время ожидания в секундах между стартом выполнением разных акков рандомное в указанном диапазоне 
+    NEXT_ADDRESS_WAIT_TIME = [30, 50]  # Время ожидания в секундах между стартом выполнением разных акков рандомное в указанном диапазоне 
 
     NEXT_TX_WAIT_TIME = [30, 50] # Время ожидания между действиями одного аккаунта (в секундах)
 
@@ -12,8 +12,8 @@
 
     # "SOL", "USDC", "USDT", "JUP", "BONK", 'ZEUS', 'PRCL'
 
-    SWAP_FROM = ["USDC", "USDT"]
-    SWAP_TO = ["USDT", "USDC"]
+    SWAP_FROM = ["SOL", "USDC"]
+    SWAP_TO = ["USDC", "SOL"]
 
     TX_COUNT = [2, 2] # Количество свапов на каждый аккаунт рандомное в указанном диапазоне
 
@@ -22,5 +22,3 @@
     SWAP_AMOUNT_PERCENT = [1, 2] # Сколько процентов от баланса свапать. Рандомизируется в пределах погрешности
     
     SLIPPAGE_BPS = 50 # slippage в битах
-
-
