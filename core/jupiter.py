@@ -63,7 +63,7 @@ class JupiterSwap(Client):
             logger.success(f"{self.id_account} | https://solscan.io/tx/{transaction_id}")
         else:
             logger.error(f"{self.id_account} | https://solscan.io/tx/{transaction_id}")
-            raise ValueError
+            raise ValueError(f'Transaction Fail: {transaction_id}')
 
         
 
