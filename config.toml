@@ -1,24 +1,24 @@
 [MAIN]
 
-    SOL_RPC_URL = "http://api.mainnet-beta.solana.com"  # Solana RPC ( http://api.mainnet-beta.solana.com )
+    SOL_RPC_URL = "http://api.mainnet-beta.solana.com"   # Solana RPC ( http://api.mainnet-beta.solana.com )
 
-    MAX_RETRIES = 3 # Максимальное кол-во попыток сделать запрос/транзакцию если они фейлятся
+    MAX_RETRIES = 3   # Максимальное кол-во попыток сделать запрос/транзакцию если они фейлятся.
 
-    NEXT_ADDRESS_WAIT_TIME = [30, 50]  # Время ожидания в секундах между стартом выполнением разных акков рандомное в указанном диапазоне 
+    NEXT_ADDRESS_WAIT_TIME = [300, 600]   # Время ожидания в секундах между стартом выполнением разных акков рандомное в указанном диапазоне.
 
-    NEXT_TX_WAIT_TIME = [30, 50] # Время ожидания между действиями одного аккаунта (в секундах)
+    NEXT_TX_WAIT_TIME = [30, 50]   # Время ожидания между действиями одного аккаунта (в секундах).
 
 [SWAP]
 
     # "SOL", "USDC", "USDT", "JUP", "BONK", 'ZEUS', 'PRCL'
 
-    SWAP_FROM = ["SOL", "USDC"]
-    SWAP_TO = ["USDC", "SOL"]
+    SWAP_FROM = ["USDC", "USDC"]
+    SWAP_TO = ["JUP"]
 
-    TX_COUNT = [2, 2] # Количество свапов на каждый аккаунт рандомное в указанном диапазоне
+    TX_COUNT = [1, 2]   # Количество свапов на каждый аккаунт рандомное в указанном диапазоне.
 
-    BALANCE_MIN_AMOUNT = 0.01 # Минимальное количество токена, которую ищет скрипт среди списка SWAP_FROM
+    BALANCE_MIN_AMOUNT = 0.1   # Минимальное количество токена, которую ищет скрипт среди списка SWAP_FROM.
 
-    SWAP_AMOUNT_PERCENT = [1, 2] # Сколько процентов от баланса свапать. Рандомизируется в пределах погрешности
+    SWAP_AMOUNT_PERCENT = [90, 95]   # Сколько процентов от баланса токена свапать.
     
-    SLIPPAGE_BPS = 50 # slippage в битах
+    SLIPPAGE_BPS = 50   # slippage в битах

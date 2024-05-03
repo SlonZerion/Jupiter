@@ -1,5 +1,7 @@
 import random, base64, json, asyncio
+from uu import Error
 from solders.transaction import VersionedTransaction
+from solders.transaction_status import TransactionConfirmationStatus
 from solders.message import to_bytes_versioned
 from solana_py_proxy.rpc.commitment import Processed
 from solana_py_proxy.rpc.types import TxOpts
@@ -7,6 +9,7 @@ from utils.config import *
 from utils.tools import *
 from utils.vars import *
 from .client import Client
+from solders.signature import Signature
 import httpx
 
 
@@ -54,18 +57,18 @@ class JupiterSwap(Client):
         
         logger.info(f"{self.id_account} | Transaction sent: https://solscan.io/tx/{transaction_id}")
         
-        status = await self.wait_tx_status(transaction_id)
-
-        if status == True:
-            return
-        else:
-            logger.error(f'{self.id_account} | https://solscan.io/tx/{transaction_id}')
-            raise ValueError("Transaction did not complete")
+        signature_status = await self.rpc.confirm_transaction(Signature.from_string(transaction_id), sleep_seconds=1)
             
+        if signature_status.value[0].status is None:
+            logger.success(f"{self.id_account} | https://solscan.io/tx/{transaction_id}")
+        else:
+            logger.error(f"{self.id_account} | https://solscan.io/tx/{transaction_id}")
+            raise ValueError
+
         
 
-async def start_swap(delay_before_start, id_account, account, proxy):
-    if delay_before_start >= 0:
+async def run_account(delay_before_start, id_account, account, proxy):
+    if delay_before_start > 0:
         delay_before_start = delay_before_start * random.randint(NEXT_ADDRESS_WAIT_TIME[0], NEXT_ADDRESS_WAIT_TIME[1])
         logger.info(f"{id_account} | Sleep {delay_before_start}s before start", 'blue')
         await asyncio.sleep(delay_before_start)

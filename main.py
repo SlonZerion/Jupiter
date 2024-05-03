@@ -1,6 +1,6 @@
 import asyncio
 from utils.tools import get_accounts_data, logger
-from core.jupiter import start_swap
+from core.jupiter import run_account
 
 
 
@@ -8,7 +8,7 @@ async def start_swap_accounts(accounts_dict: dict):
     tasks_list = []
     delay_between_pairs = 0
     for id, v in accounts_dict.items():
-        tasks_list.append(asyncio.create_task(start_swap(delay_between_pairs, id, v['account'], v['proxy'])))
+        tasks_list.append(asyncio.create_task(run_account(delay_between_pairs, id, v['account'], v['proxy'])))
         delay_between_pairs += 1
     await asyncio.gather(*tasks_list)
     await asyncio.sleep(1)
