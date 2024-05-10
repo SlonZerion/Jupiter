@@ -1,7 +1,10 @@
 import asyncio
+import io
 import random
 import sys
+import msoffcrypto
 import pandas as pd
+from getpass import getpass
 from utils.config import MAX_RETRIES
 from utils.logger import logger
 
@@ -17,7 +20,12 @@ def int_to_decimal(i, n):
 def get_accounts_data():
     try:
         with open('Accounts.xlsx', 'rb') as file:
-            wb = pd.read_excel(file, sheet_name="Jupiter")
+            decrypted_data = io.BytesIO()
+            password = getpass()
+            office_file = msoffcrypto.OfficeFile(file)
+            office_file.load_key(password=password)
+            office_file.decrypt(decrypted_data)
+            wb = pd.read_excel(decrypted_data, sheet_name="Jupiter")
             accounts_data = {}
             for index, row in wb.iterrows():
                 account_name = row["Name"] if isinstance(row["Name"], (int, str)) else int(index) + 1
