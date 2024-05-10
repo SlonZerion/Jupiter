@@ -1,10 +1,10 @@
 import asyncio
-import io
+#import io # uncomment if you want use password for excel
 import random
 import sys
-import msoffcrypto
+#import msoffcrypto # uncomment if you want use password for excel
 import pandas as pd
-from getpass import getpass
+#from getpass import getpass # uncomment if you want use password for excel
 from utils.config import MAX_RETRIES
 from utils.logger import logger
 
@@ -20,12 +20,13 @@ def int_to_decimal(i, n):
 def get_accounts_data():
     try:
         with open('Accounts.xlsx', 'rb') as file:
-            decrypted_data = io.BytesIO()
-            password = getpass()
-            office_file = msoffcrypto.OfficeFile(file)
-            office_file.load_key(password=password)
-            office_file.decrypt(decrypted_data)
-            wb = pd.read_excel(decrypted_data, sheet_name="Jupiter")
+            #decrypted_data = io.BytesIO() # uncomment if you want use password for excel
+            #password = getpass()
+            #office_file = msoffcrypto.OfficeFile(file)
+            #office_file.load_key(password=password)
+            #office_file.decrypt(decrypted_data)
+            #wb = pd.read_excel(decrypted_data, sheet_name="Jupiter")
+            wb = pd.read_excel(file, sheet_name="Jupiter") #remove if you want use password for excel
             accounts_data = {}
             for index, row in wb.iterrows():
                 account_name = row["Name"] if isinstance(row["Name"], (int, str)) else int(index) + 1
