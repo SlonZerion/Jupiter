@@ -25,3 +25,4 @@ typing_extensions==4.11.0
 tzdata==2024.1
 websockets==11.0.3
 win32-setctime==1.1.0
+msoffcrypto-tool==5.1.1
