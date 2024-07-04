@@ -1,7 +1,7 @@
 # Jupiter Volume
 
-My Telegram Channel:
-https://t.me/slon_department
+My Telegram:
+https://t.me/SlonSOL
 
 `pip install -r requirements.txt`
 `python main.py`
